@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+function init(){
+	$.ajax({
+	  type: 'GET',
+	  url: 'http://192.168.0.9/api/v01/population/eachtown/?year=2014&month=12',
+	  dataType: 'json',
+	  success: function(data){
+	    data = data.sort(function(a,b){
+		    return d3.descending(a['population'][0]['total'], b['population'][0]['total']);
+		    } );
+
+
+	    var w = 800
+	    var h = 4000
+
+	    var xScale = d3.scale.linear()
+         	.domain([0, d3.max(data, function(d) { return d['population'][0]['total']; })])
+         	.range([0, w]);
+
+
+	var svg = d3.select("body")
+		    	.append("svg")
+		    	.attr("width", w)
+		    	.attr("height", h);
+	   svg.selectAll("rect")
+		   .data(data)
+		   .enter()
+		   .append("rect")
+		   .attr("x", 0)
+		   .attr("y",  function(d, i) {
+		    return i * (h/data.length);  
+		    })
+		   .attr("width", function(d, i) {
+		    	return xScale(d['population'][0]['total']);  
+		    })
+		   .attr("height",  function(d, i) {
+		    return h/data.length - 5;  
+		    })
+		   .attr("fill", "lightblue");
+
+	    svg.selectAll("text")
+		 .data(data)
+		 .enter()
+		 .append("text")
+		 .text(function(d) {
+		    return d["town_name"] +"("+d['population'][0]['total']+")";
+		 })
+		 .attr("x", 2)
+		 .attr("y",  function(d, i) {
+		    return i * (h/data.length)+12;  
+		  })
+		 .attr("font-family", "sans-serif")
+		 .attr("font-size", "11px")
+	}
+})
+}
+window.onload = init
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
