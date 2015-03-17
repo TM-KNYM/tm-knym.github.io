@@ -2,33 +2,6 @@
 <html>
 <head>
 <meta charset='utf-8'>
-<style>
-
-.bar {
-  fill: steelblue;
-}
-
-.bar:hover {
-  fill: brown;
-}
-
-.axis {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-</style>
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript">
@@ -36,7 +9,7 @@
 function init(){
 	$.ajax({
 	  type: 'GET',
-	  url: 'http://192.168.0.9/api/v01/population/eachtown/?year=2014&month=12',
+	  url: 'http://8od.live-on.net/api/v01/population/eachtown/?year=2014&month=12',
 	  dataType: 'json',
 	  success: function(data){
 	    data = data.sort(function(a,b){
