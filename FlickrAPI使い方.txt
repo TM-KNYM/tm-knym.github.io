@@ -1,0 +1,9 @@
+﻿Setから写真をとってくる
+https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=32ed6f0a870feea0acaf4d05174f4cd9&photoset_id=72157649569862553&user_id=57041930@N00&format=json
+
+写真情報の取得
+https://api.flickr.com/services/rest/?method=flickr.photos.getInfo&api_key=32ed6f0a870feea0acaf4d05174f4cd9&photo_id=16457791043&format=json
+
+オリジナルシークレットを使うのがコツ
+画像のURL
+https://farm{farm}.staticflickr.com/{server}/{photoId}_{originalsecret}_o.jpg
