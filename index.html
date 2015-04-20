@@ -13,11 +13,11 @@
 <!--
 body {
   background-image: url(image/loading.gif);
-  background-position: center center;
   background-repeat: no-repeat;
+  background-position: center center;
   background-attachment: fixed;
   background-size: auto;
-  background-color: #111111;
+  background-color: #464646;
 }
 #mainpanel{
   border-radius: 0.5em; 
@@ -36,8 +36,8 @@ body {
   color: #ffffff;
   border-style:solid;
   display: block;
-  border-color = #ffffff;
-  border-width = 20pt;
+  border-color : #ffffff;
+  border-width : 2pt;
   font-size: 18px;
   font-weight: bold;
   text-align: center;
@@ -69,12 +69,14 @@ body {
 		{
 			$('body').css({
 				'background-image': 'url('+bguri+')',
+				'background-repeat': 'no-repeat',
+				'background-position': 'center center',
+				'background-attachment': 'fixed',
 				'-webkit-background-size': 'cover',
 				'-moz-background-size': 'cover',
 				'-o-background-size': 'cover',
 				'-moz-background-size' : 'cover',
 				'background-size' : 'cover',
-				'height' : '100%'
 				});
 		})
 	} 
