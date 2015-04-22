@@ -77,12 +77,11 @@ body {
 			var s_width = screen.width;
 			var s_height = screen.height;
 			
-			width = s_width;
-			height = (width*i_height)/i_width
+			var width = s_width;
+			var height = (width*i_height)/i_width
 			if( height < s_height){
-				n_height = s_height;
-				width = (width*n_height)/height
-				height = n_height
+				height = s_height;
+				width = (s_width*height)/s_height
 			}
 
 			size = width + 'px ' + height+'px' 
