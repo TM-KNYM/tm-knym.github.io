@@ -74,14 +74,14 @@ body {
 			var i_width = imgInfo['width']
 			var i_height = imgInfo['height']
 
-			var s_width = screen.width;
-			var s_height = screen.height;
+			var w_width = window.innerWidth;
+			var w_height = window.innerHeight;
 			
-			var width = s_width;
+			var width = w_width;
 			var height = (width*i_height)/i_width
-			if( height < s_height){
-				height = s_height;
-				width = (s_width*height)/s_height
+			if( height < w_height){
+				height = w_height;
+				width = (i_width * height)/i_height
 			}
 
 			size = width + 'px ' + height+'px' 
