@@ -59,7 +59,7 @@ function _getPhotoInfo(data, _cb){
 				jsonp : 'jsoncallback', // Flickrの場合はjsoncallback
 		}).then(function(data){
 			var sizes = data['sizes']['size'];
-			var size = sizes.find(_isOriginal);
+			var size = _findOrgSize(sizes);
 			fotoInfo = {
 				url: bgImageUrl,
 				width: size['width'],
@@ -69,12 +69,18 @@ function _getPhotoInfo(data, _cb){
 		});
 	});
 };
+function _findOrgSize(sizes){
+	for(var i=0;i<sizes.length; i++){
+		if(_isOriginal(sizes[i])) return sizes[i];
+	}
+	return undefined;
+};
 
 function _createBgImageUrl(info){
 	return 'https://farm'+info['farm']+'.staticflickr.com/'+info['server']+'/'+info['id']+'_'+info['originalsecret']+'_o.jpg' 
 }
 
-function _isOriginal(ele,index,ary){
+function _isOriginal(ele){
 	var o_key = 'Original';
 	return o_key == ele['label']
 }

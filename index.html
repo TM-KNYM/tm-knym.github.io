@@ -73,11 +73,12 @@ body {
 	function changeSize(){
 			var i_width = imgInfo['width']
 			var i_height = imgInfo['height']
+
 			var s_width = screen.width;
 			var s_height = screen.height;
-			width = s_width;
-			height = (i_width*s_height)/s_width
 			
+			width = s_width;
+			height = (width*i_height)/i_width
 			if( height < s_height){
 				n_height = s_height;
 				width = (width*n_height)/height
@@ -102,9 +103,7 @@ body {
 		getBgImageInfo(function(res)
 		{
 			imgInfo = res
-
 			changeSize()
-	
 		})
 	} 
 	window.onresize=function(){
