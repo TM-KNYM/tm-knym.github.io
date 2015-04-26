@@ -8,7 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
     <title>TMKNYM</title>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+
 <style type="text/css">
 <!--
 html {
@@ -28,21 +36,30 @@ body {
 @media screen and (max-width: 500px){
 	#mainpanel{
 	  color : #FFFFFF;
-	  background-color: rgba( 33,33,33, 0.50 );
+	  background-color: rgba( 33,33,33, 0.80 );
 	  width: 8%;
-	  height : auto;
+	  height:auto;
 	  min-width : 170px;
-	  min-height : 100%;
-	  padding-left: 5px;
-	  padding-bottom: 10px;
-	  padding-top: 5px;
+	  padding-top: 2px;
 	  margin-left : auto;
 	  margin-right : auto;
+	}
+	#nav{
+		list-style-type:none;
+		display:none;
+	}
+	#s_menuicon{
+		background-color: rgba( 33,33,33, 0.00 );
+		text-decoration: none;
+		display:display;
+		margin-left:5px;
+		border-style:none;
 	}
 }
 @media screen and (min-width: 501px){
 #mainpanel{
   color : #FFFFFF;
+  box-shadow: 0 2px 2px 0 black;
   text-align: center;
   margin-left:10px;
   background-color: rgba( 33,33,33, 0.90 );
@@ -50,55 +67,59 @@ body {
   height : auto;
   min-width : 170px;
   min-height : 100%;
-  padding-left: 5px;
   padding-bottom: 10px;
   padding-top: 5px;
 }
+#nav{
+list-style-type:none;
+display:block;
 }
+#s_menuicon{
+		display:none;
+}
+}
+
 #tit{
   text-align: center;
   color : #FFFFFF;
   font-size: 25px;
-  padding-left: 0px;
   padding-bottom: 20px;
-  padding-top: 0px;
 }
 #category{
   text-align: left;
   color : #FFFFFF;
-  font-size: 18px;
-  padding-left: 0px;
-  padding-bottom: 0px;
-  padding-top: 0px;
-  border-bottom: 1px solid rgba(0,0,0,1);
+  font-size: 20px;
+  border-bottom: 1px solid black;
   box-shadow: 0 1px 0 rgba(255,255,255,0.1);
 }
-.button a {
-  width: 60%;
-  border-radius: 0.5em; 
-  background-color: #000000;
+a {
+  text-decoration: none;
   color: #ffffff;
   font-size-adjust: normal;
-  border-style:solid;
   display: block;
-  border-color : #ffffff;
-  border-width : 2pt;
   font-size: 16px;
-  font-weight: bold;
   text-align: center;
-  text-decoration: none;
-  margin: 5px auto;
   padding: 3px 1px;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -o-transition: 0.3s;
   -ms-transition: 0.3s;
   transition: 0.3s;
+  outline:0;
 }
-.button a:hover {
+a:visited {
+  color: #ffffff;
   text-decoration: none;
-  background-color: #FFFFFF;
-  font-color: #000000;
+}
+a:hover {
+  text-decoration: none;
+  color: #999999;
+  background-color: #222222;
+}
+a:active {
+  color: #999999;
+  text-decoration: none;
+  background-color: #222222;
 }
 
 -->
@@ -114,6 +135,20 @@ body {
 		width: 1,
 		height:1,
 	}
+	function showHide(){
+		var display = $("#nav").css("display");
+		if(display == 'none'){
+			$('#nav').css({
+				'display': 'block',
+				});
+		}else{
+			$('#nav').css({
+				'display': 'none',
+				});
+		}
+	}
+
+
 	function changeSize(){
 			var i_width = imgInfo['width']
 			var i_height = imgInfo['height']
@@ -156,17 +191,20 @@ body {
   </head>
   <body onload=loadBgImage() >
 	<div id='mainpanel'>
-	<h1 id='tit'>TMKNYM</h1>
-	<h2 id='category'>Photo</h2>
-		<div class="button"><a href="https://500px.com/TomoakiKanayama">500px</a></div>
-		<div class="button"><a href="https://www.flickr.com/photos/gagman/">Flickr</a></div>
-		<div class="button"><a href="http://1x.com/member/knym1985">1x.com</a></div>
-	<h2 id='category'>StockPhoto</h2>
-		<div class="button"><a href="https://pixta.jp/@gagman">Pixta</a></div>
-		<div class="button"><a href="https://jp.fotolia.com/p/202904366">Fotolia</a></div>
-	<h2 id='category'>SNS</h2>
-		<div class="button"><a href="https://www.facebook.com/tomoaki.kanayama.3">Facebook</a></div>
+	<h1 id='tit'>TMKNYM <button  id='s_menuicon' onClick="showHide()" ><i class="glyphicon glyphicon-menu-hamburger" ></i></button></h1>
+	<div id='nav'>
+	<li id='category'>Photo</li>
+		<li><a href="https://500px.com/TomoakiKanayama">500px</a></li>
+		<li><a href="https://www.flickr.com/photos/gagman/">Flickr</a></li>
+		<li><a href="http://1x.com/member/knym1985">1x.com</a>
+	</li>
+	<li id='category'>StockPhoto</li>
+		<li><a href="">Pixta</a></li>
+		<li><a href="">fotolia</a></li>
+	<li id='category'>SNS</li>
+		<li><a href="">Facebook</a></li>
     </div>
+	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="flickr.js"></script>
   </body>
