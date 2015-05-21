@@ -27,6 +27,17 @@ function getBgImageInfo(_cb) {
 		})
 	});
 }
+function _find2kSize(sizes){
+	for(var i=0;i<sizes.length; i++){
+		if(_is2k(sizes[i])) return sizes[i];
+	}
+	return undefined;
+};
+
+function _is2k(ele){
+	var o_key = 'Large 2048';
+	return o_key == ele['label']
+}
 
 function _getPhotoInfo(data, _cb){
 	photos = data["photoset"]['photo'];
@@ -45,7 +56,6 @@ function _getPhotoInfo(data, _cb){
 		jsonp : 'jsoncallback', // Flickrの場合はjsoncallback
 	}).then(function(res){
 		var info = res['photo']
-		bgImageUrl = _createBgImageUrl(info) 
 		$.ajax({
 				type : 'GET',
 				url : root_url,
@@ -59,9 +69,9 @@ function _getPhotoInfo(data, _cb){
 				jsonp : 'jsoncallback', // Flickrの場合はjsoncallback
 		}).then(function(data){
 			var sizes = data['sizes']['size'];
-			var size = _findOrgSize(sizes);
+			var size = _find2kSize(sizes);
 			fotoInfo = {
-				url: bgImageUrl,
+				url: size["source"],
 				width: size['width'],
 				height: size['height'],
 			}
@@ -69,19 +79,5 @@ function _getPhotoInfo(data, _cb){
 		});
 	});
 };
-function _findOrgSize(sizes){
-	for(var i=0;i<sizes.length; i++){
-		if(_isOriginal(sizes[i])) return sizes[i];
-	}
-	return undefined;
-};
 
-function _createBgImageUrl(info){
-	return 'https://farm'+info['farm']+'.staticflickr.com/'+info['server']+'/'+info['id']+'_'+info['originalsecret']+'_o.jpg' 
-}
-
-function _isOriginal(ele){
-	var o_key = 'Original';
-	return o_key == ele['label']
-}
 
