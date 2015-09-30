@@ -88,9 +88,7 @@ function draw(w,h){
     ctx.fillRect(0, 0, w, h);
     var thr = new Throttle(100);
 	canvas.onmousemove = mouseMoveListner;
-	canvas.ontouchmove = mouseMoveListner;
 	canvas.ontouchstart = mouseMoveListner;
-	canvas.ontouchend = mouseMoveListner;
     var _tempD = null;
     var _tempX = 0;
     var _tempY = 0;
