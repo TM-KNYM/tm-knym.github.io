@@ -114,7 +114,9 @@ function draw(w,h){
                 },e);
 	} 
 }
-
+document.body.addEventListener('touchstart', function(event) {
+  event.preventDefault();
+});
 var recognition = new webkitSpeechRecognition();
 recognition.lang = 'en-US';
   recognition.continuous = false;
