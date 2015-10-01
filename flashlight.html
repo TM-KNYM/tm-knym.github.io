@@ -116,9 +116,10 @@ recognition.interimResults = true;
 
 recognition.onstart = function(event){ 
     console.log("onstart", event);
-}   ; 
+}; 
 recognition.onresult = function(event){
    result = event.results.item(0).item(0).transcript;
+$("#log").empty();
 $("#log").html(result);
 };
  
