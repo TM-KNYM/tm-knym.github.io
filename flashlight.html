@@ -36,9 +36,8 @@ canvas#canvas{
         <div class="col s8">
           <div class="card blue-grey darken-1">
              <div class='row'>
-              <canvas id='canvas'></canvas>
             <div class="card-image" id='div-canvas'>
-              <img id='targetImg' src="https://c2.staticflickr.com/8/7304/16545889962_a0d110f185_z.jpg">
+		    <div id="log">loop!</div>
             </div>
              </div>
             <div class="card-action center">
@@ -53,7 +52,7 @@ canvas#canvas{
       </div>
   </div>
   <div class="footer-copyright center-align ">
-    © 2014 Copyright Chiyuru
+    c 2014 Copyright Chiyuru
   </div>
 <script>
 /**
@@ -74,13 +73,18 @@ function Throttle(minInterval) {
     };
 }
 
+var recing = false;
 function rec_voice(){
-
-recognition.start();
+  if(recing){
+  recing = false; 
+  recognition.stop();
+  }else{
+  recing = true; 
+  recognition.start();
+  }
 }
 /**
    draw canvas
-  */
 function draw(w,h){
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
@@ -111,28 +115,29 @@ function draw(w,h){
                ctx.putImageData(imageData, mouseX, mouseY);
                 },e);
 	} 
-}
+}*/
 document.body.addEventListener('touchstart', function(event) {
   event.preventDefault();
 });
 var recognition = new webkitSpeechRecognition();
 recognition.lang = 'en-US';
-  recognition.continuous = false;
-  recognition.interimResults = true;
+recognition.continuous = true;
+recognition.interimResults = true;
 
 recognition.onstart = function(event){ 
     console.log("onstart", event);
 }   ; 
 recognition.onresult = function(event){
-    alert(event.results.item(0).item(0).transcript)
+   result = event.results.item(0).item(0).transcript;
+$("#log").html(result);
 };
  
 var w = $('#targetImg').width();
 var h = $('#targetImg').height();
-$('#canvas').attr('width', w);
-$('#canvas').attr('height', h);
+//$('#canvas').attr('width', w);
+//$('#canvas').attr('height', h);
 
-draw(w,h);
+//draw(w,h);
 </script>
 
 </body>
