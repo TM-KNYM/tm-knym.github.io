@@ -34,9 +34,9 @@ body {
 @media screen and (max-width: 500px){
 	#mainpanel{
 	  background-color: rgba( 33,33,33, 0.80 );
-	  width: 8%;
+	  width: 15%;
 	  height:auto;
-	  min-width : 170px;
+	  min-width : 240px;
 	  padding-top: 2px;
 	  margin-left : auto;
 	  margin-right : auto;
@@ -65,12 +65,12 @@ body {
 	#mainpanel{
 	  box-shadow: 0 2px 2px 0 black;
 	  text-align: center;
-	  margin-left:10px;
+	  margin-left:20px;
 	  background-color: rgba( 33,33,33, 0.90 );
-	  width: 8%;
+	  width: 15%;
 	  height : auto;
-	  min-width : 170px;
-	  min-height : 100%;
+	  min-width : 240px;
+	  min-height : 40%;
 	  padding-bottom: 10px;
 	  padding-top: 5px;
 	}
@@ -89,11 +89,15 @@ body {
 	  border-bottom: 1px solid black;
 	  box-shadow: 0 1px 0 rgba(255,255,255,0.1);
 	}
+	#sep{
+	  color : #888888;
+	  box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+	}
 }
 #tit{
   text-align: center;
   color : #FFFFFF;
-  font-size: 25px;
+  font-size: 35px;
   padding-bottom: 20px;
 }
 
@@ -102,7 +106,7 @@ a {
   color: #ffffff;
   font-size-adjust: normal;
   display: block;
-  font-size: 12px;
+  font-size: 20px;
   text-align: center;
   padding: 3px 1px;
   -webkit-transition: 0.3s;
@@ -146,10 +150,17 @@ a:active {
 			$('#nav').css({
 				'display': 'block',
 				});
+			$('#sep').css({
+				'display': 'none',
+				});
 		}else{
 			$('#nav').css({
 				'display': 'none',
 				});
+			$('#sep').css({
+				'display': 'block',
+				});
+		
 		}
 	}
 
@@ -197,11 +208,12 @@ a:active {
   <body onload=loadBgImage() >
 	<div id='mainpanel'>
 	<h1 id='tit'>TMKNYM <button  id='s_menuicon' onClick="showHide()" ><i class="glyphicon glyphicon-menu-hamburger" ></i></button></h1>
+	<hr id="sep">
 	<div id='nav'>
 		<li><a href="https://www.facebook.com/tomoaki.kanayama.3">Facebook</a></li>
 		<li><a href="https://500px.com/TomoakiKanayama">500px</a></li>
 		<li><a href="https://github.com/TM-KNYM">GitHub</a></li>
-    </div>
+	</div>
 	</div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript" src="flickr.js"></script>
