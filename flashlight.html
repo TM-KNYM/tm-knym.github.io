@@ -119,8 +119,6 @@ function CharControl(ctx,length){
 function init(instraction){
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
-
-    
     
     var ctrlList = [];
     var charCtrl = CharControl(ctx, length);
@@ -163,8 +161,8 @@ recognition.onresult = function(event){
     var text = event.results.item(0).item(0).transcript;
     alert(text);
     if(text === 'change'){
-        instraction.pos.x = Math.floor( Math.random() * size)
-        instraction.pos.y = Math.floor( Math.random() * size)
+        instraction.pos.x = Math.floor( Math.random() * 4)
+        instraction.pos.y = Math.floor( Math.random() * 4)
     }
 };
 
