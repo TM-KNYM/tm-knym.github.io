@@ -51,7 +51,8 @@ canvas#canvas{
 <script>
 var WIDTH = 400;
 var HEIGHT = 400;
-
+var length = 150;
+var size = 4;
 var COL = 4;
 var ROW = 4;
 
@@ -118,8 +119,7 @@ function CharControl(ctx,length){
 function init(instraction){
 	var canvas = document.getElementById('canvas');
 	var ctx = canvas.getContext('2d');
-    var length = 150;
-    var size = 4;
+
     
     
     var ctrlList = [];
