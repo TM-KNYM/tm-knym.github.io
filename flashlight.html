@@ -33,8 +33,7 @@ canvas#canvas{
             <br>
         </div>
         <div class="col s8">
-             <div class='row'>
-            </div>
+           </div>
             <div class="card-action center">
                 <div onclick="rec_voice()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">keyboard_voice</i></div>
             </div>
@@ -47,7 +46,7 @@ canvas#canvas{
       </div>
   </div>
   <div class="footer-copyright center-align ">
-    © 2014 Copyright Chiyuru
+    c 2014 Copyright Chiyuru
   </div>
 <script>
 var WIDTH = 400;
@@ -157,7 +156,6 @@ var recognition = new webkitSpeechRecognition();
   recognition.lang = 'en-US';
   recognition.continuous = false;
   recognition.interimResults = true;
-
 recognition.onstart = function(event){ 
     console.log("onstart", event);
 }; 
@@ -169,7 +167,6 @@ recognition.onresult = function(event){
         instraction.pos.y = Math.floor( Math.random() * size)
     }
 };
- 
 
 init(instraction);
 </script>
