@@ -20,7 +20,7 @@ main {
 }
 canvas#canvas{
     background-color:white;
-    width:480px;
+    width:400px;
     height:480px;
 }
 </style>
@@ -32,7 +32,7 @@ canvas#canvas{
             <br>
         </div>
         <div class="col s8">
-          <canvas id='canvas' width='480px' height='480px'></canvas>
+          <canvas id='canvas' width='400px' height='400px'></canvas>
             <div class="card-action center">
                 <div onclick="rec_voice()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">keyboard_voice</i></div>
             </div>
@@ -161,7 +161,7 @@ var recognition = new webkitSpeechRecognition();
   recognition.onresult = function(event){
     var text = event.results.item(0).item(0).transcript;
 
-    if(results[i].isFinal){
+    if(event[i].isFinal){
         if(text === 'right'||text === 'light' ){
             if(instraction.pos.x < 3){
                 instraction.pos.x += 1; 
