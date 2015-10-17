@@ -153,7 +153,7 @@ var instraction = {
 
 
 var recognition = new webkitSpeechRecognition();
-  recognition.lang = 'en-US';
+  recognition.lang = '"ja-JP"';
   recognition.continuous = false;
   recognition.interimResults = true;
   recognition.onstart = function(event){ 
@@ -162,26 +162,26 @@ var recognition = new webkitSpeechRecognition();
    var results = event.results;
     for (var i = 0; i<results.length; i++){ 
     if(results[i].isFinal){
-        if(results[i][0].transcript === 'right'||results[i][0].transcript === 'light' ){
+        if(results[i][0].transcript === '右'){
             if(instraction.pos.x < 3){
                 instraction.pos.x += 1; 
             }
         }
-         if(results[i][0].transcript === 'left'){
+         if(results[i][0].transcript === '左'){
              if(instraction.pos.x > 0){
                 instraction.pos.x -= 1; 
             }
         }
-         if(results[i][0].transcript === 'up'){
-            if(instraction.pos.y < 3){
-                instraction.pos.y += 1; 
-            }
-        }
-         if(results[i][0].transcript === 'down'){
+         if(results[i][0].transcript === '上'){
              if(instraction.pos.y > 0 ){
                 instraction.pos.y -= 1; 
             }
         }
+         if(results[i][0].transcript === '下'){
+            if(instraction.pos.y < 3){
+                instraction.pos.y += 1; 
+            }
+       }
     }
     }
    };
