@@ -159,29 +159,30 @@ var recognition = new webkitSpeechRecognition();
   recognition.onstart = function(event){ 
   }; 
   recognition.onresult = function(event){
-    var text = event.results.item(0).item(0).transcript;
-
-    if(event[i].isFinal){
-        if(text === 'right'||text === 'light' ){
+   var results = event.results;
+    for (var i = 0; i<results.length; i++){ 
+    if(results[i].isFinal){
+        if(results[i][0].transcript === 'right'||results[i][0].transcript === 'light' ){
             if(instraction.pos.x < 3){
                 instraction.pos.x += 1; 
             }
         }
-         if(text === 'left'){
+         if(results[i][0].transcript === 'left'){
              if(instraction.pos.x > 0){
                 instraction.pos.x -= 1; 
             }
         }
-         if(text === 'up'){
+         if(results[i][0].transcript === 'up'){
             if(instraction.pos.y < 3){
                 instraction.pos.y += 1; 
             }
         }
-         if(text === 'down'){
+         if(results[i][0].transcript === 'down'){
              if(instraction.pos.y > 0 ){
                 instraction.pos.y -= 1; 
             }
         }
+    }
     }
    };
 
