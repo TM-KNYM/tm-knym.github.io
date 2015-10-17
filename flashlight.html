@@ -20,20 +20,19 @@ main {
 }
 canvas#canvas{
     background-color:white;
-    width:600px;
-    height:600px;
+    width:480px;
+    height:480px;
 }
 </style>
 </head>
 <body>
-  <canvas id='canvas' width='600px' height='600px'></canvas>
   <div class='container'>
       <div class="row">
         <div class="col s2">
             <br>
         </div>
         <div class="col s8">
-           </div>
+          <canvas id='canvas' width='480px' height='480px'></canvas>
             <div class="card-action center">
                 <div onclick="rec_voice()" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">keyboard_voice</i></div>
             </div>
@@ -49,15 +48,13 @@ canvas#canvas{
     c 2014 Copyright Chiyuru
   </div>
 <script>
-var WIDTH = 400;
-var HEIGHT = 400;
-var length = 150;
+var length = 120;
 var size = 4;
 var COL = 4;
 var ROW = 4;
 
 function rec_voice(){
-recognition.start();
+    recognition.start();
 }
 
 
@@ -72,7 +69,7 @@ function GridControl(ctx, length, size){
      var drawFunc = function(){
               ctx.beginPath();
               var  max = length*size;
-              for(var i=1; i<=size; i++ ){
+              for(var i=0; i<=size; i++ ){
                   ctx.moveTo(length * i, 0);
                   ctx.lineTo(length * i, max);
                   ctx.moveTo(0, length*i);
@@ -86,23 +83,28 @@ function GridControl(ctx, length, size){
 }
 
 function CharControl(ctx,length){
+
+    var x = 0;
+    var y= 0;
     var drawFunc = function(){
-        var x = this.col * length ;
-        var y = this.row * length ;
-        ctx.fillStyle = 'rgb(255,0,255)';
-        ctx.fillRect(x,y,length, length);
+        x = this.col * length ;
+        y = this.row * length ;
     }
     var updateFunc = function(notification){
-           var x = this.col * length ;
-           var y = this.row * length ;
+           x = this.col * length ;
+           y = this.row * length ;
            ctx.clearRect(x,y,length, length);
-           
+           var img = new Image();
+           img.src = "meme.jpg"
            this.col = notification.col;
            this.row = notification.row;
-           var x = this.col * length ;
-           var y = this.row * length ;
-           ctx.fillStyle = 'rgb(255,0,255)';
-           ctx.fillRect(x,y,length, length);
+           var posX = this.col * length ;
+           var posY = this.row * length ;
+           img.onload = function(event){
+                var dstWidth = length;
+                var dstHeight = length
+                ctx.drawImage(this, 0, 0, this.width, this.height, posX, posY, dstWidth, dstHeight);
+            }
     }
 
     var obj = createControlObj(drawFunc, updateFunc)
@@ -154,17 +156,34 @@ var recognition = new webkitSpeechRecognition();
   recognition.lang = 'en-US';
   recognition.continuous = false;
   recognition.interimResults = true;
-recognition.onstart = function(event){ 
-    console.log("onstart", event);
-}; 
-recognition.onresult = function(event){
+  recognition.onstart = function(event){ 
+  }; 
+  recognition.onresult = function(event){
     var text = event.results.item(0).item(0).transcript;
-    alert(text);
-    if(text === 'change'){
-        instraction.pos.x = Math.floor( Math.random() * 4)
-        instraction.pos.y = Math.floor( Math.random() * 4)
+
+    if(results[i].isFinal){
+        if(text === 'right'||text === 'light' ){
+            if(instraction.pos.x < 3){
+                instraction.pos.x += 1; 
+            }
+        }
+         if(text === 'left'){
+             if(instraction.pos.x > 0){
+                instraction.pos.x -= 1; 
+            }
+        }
+         if(text === 'up'){
+            if(instraction.pos.y < 3){
+                instraction.pos.y += 1; 
+            }
+        }
+         if(text === 'down'){
+             if(instraction.pos.y > 0 ){
+                instraction.pos.y -= 1; 
+            }
+        }
     }
-};
+   };
 
 init(instraction);
 </script>
