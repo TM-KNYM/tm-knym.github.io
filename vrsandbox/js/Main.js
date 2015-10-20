@@ -1,5 +1,5 @@
 (function() {
-	var STEP = 100;
+	var STEP = 10;
 	var scene;
 	var camera;
 	var renderer;
@@ -10,14 +10,12 @@
 	var clock;
 	var edgesPool;
 
-	/**
-	 * Initialize
-	 */
 	function init() {
 		scene = new THREE.Scene();
 
-		camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 9000);
-		camera.position.set(3000, 0, 0);
+		camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 1, 9000);
+		camera.position.set(0, -100, 0);
+		camera.up.set(0, 1, 0);
 		scene.add(camera);
 
 		renderer = new THREE.WebGLRenderer({antialias: true});
@@ -81,7 +79,7 @@
 		edgesPool = [];
 		var geometry = new THREE.SphereGeometry(STEP);
 		var material = new THREE.MeshPhongMaterial({ color: 0xFF0000 });
-		for(var i = 0; i < 700; i++) {
+		for(var i = 0; i < 300; i++) {
             var color = Math.round(0xFFFFFF * (Math.random()-0.5));
 			var mesh = new THREE.Mesh(geometry, material);
 			var egh = new THREE.EdgesHelper(mesh, color);
@@ -96,31 +94,29 @@
 	 * 落下アニメーションを停止します。
 	 */
 	function startDrop(egh) {
-		// ランダムに立方体を配置
-		egh.position.y = STEP * Math.round(9000 * (Math.random() - 0.5) / STEP) ;
-		egh.position.x = 20000;
-		egh.position.z = STEP * Math.round(9000 * (Math.random() - 0.5) / STEP) ;
+		egh.position.x = 0; // Math.round(9000 * (Math.random() - 0.5) / STEP);
+		egh.position.z = 0; // Math.round(9000 * (Math.random() - 0.5) / STEP) ;
+		egh.position.y = -20000;//STEP * Math.round(9000 * (Math.random() - 0.5) / STEP) ;
 		egh.updateMatrix();
 
 		// 秒数
-		var sec = 8 * Math.random() + 3;
-
+		var sec = 2 * Math.random() + 3;
 		TweenMax.to(egh.position, sec, {
-			x: STEP / 2 + 8,
+			x: Math.round(9000 * (Math.random() - 0.5) / STEP),
+			z: Math.round(9000 * (Math.random() - 0.5) / STEP),
+			y: 0,
 			ease: Expo.easeOut,
 			onComplete: endDrop,
 			onCompleteParams: [egh]
 		});
 	}
 
-	/**
-	 * 落下アニメーションが終了しました。
-	 */
 	function endDrop(egh) {
 		// 再度アニメーション
+        var ratio = Math.floor( Math.random() * 11 );
 		setTimeout(function() {
 			startDrop(egh)
-		}, 1000);
+		}, ratio*100);
 	}
 
 
@@ -168,6 +164,7 @@
 	 */
 	function render() {
 		effect.render(scene, camera);
+        //renderer.render(scene, camera);
 	}
 
 	/**
