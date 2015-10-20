@@ -1,5 +1,5 @@
 (function() {
-	var STEP = 10;
+	var STEP = 4;
 	var scene;
 	var camera;
 	var renderer;
@@ -78,11 +78,11 @@
 	function createBox() {
 		edgesPool = [];
 		var geometry = new THREE.SphereGeometry(STEP);
-		var material = new THREE.MeshPhongMaterial({ color: 0xFF0000 });
-		for(var i = 0; i < 300; i++) {
-            var color = Math.round(0xFFFFFF * (Math.random()-0.5));
-			var mesh = new THREE.Mesh(geometry, material);
-			var egh = new THREE.EdgesHelper(mesh, color);
+		for(var i = 0; i < 1000; i++) {
+            var cr = Math.round(0xFFFFFF * (Math.random()-0.5));
+            var material = new THREE.MeshBasicMaterial({ color: cr });
+			var egh = new THREE.Mesh(geometry, material);
+			//var egh = new THREE.EdgesHelper(mesh, color);
 			egh.updateMatrix();
 			scene.add(egh);
 			edgesPool.push(egh);
