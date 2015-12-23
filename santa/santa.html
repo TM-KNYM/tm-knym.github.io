@@ -15,24 +15,29 @@
     </nav> 
       <div class="container">
           <div class='row'>
-              <div class='col s12'>
-                  <div class='class="waves-effect waves-light btn orange' onclick='playMC()'>MerryChristmas!</div>
-              </div>
-              <div class='col s12'>
-                  <div class='class="waves-effect waves-light btn orange'>MerryChristmas!</div>
-              </div>
+              <div class='class="waves-effect waves-light btn orange col s12' onclick='play("mc")'>MerryChristmas!</div>
+              <div class='class="waves-effect waves-light btn orange col s12'onclick='play("kno")'>Knock</div>
+              <div class='class="waves-effect waves-light btn orange col s12'onclick='play("bell")'>Bell</div>
 
           </div>
       </div>
-    <audio id="mc" src="snd/mc.mp3">
-    </audio>
+    <audio id="mc" src="snd/mc.mp3"></audio>
+    <audio id="kno" src="snd/kno.mp3"></audio>
+    <audio id="bell" src="snd/bell.mp3"></audio>
         http://www.freesfx.co.uk
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript">
-        function playMC(){
-           var tar = document.getElementById('mc');
+        function play(txt){
+           var tar = document.getElementById(txt);
           tar.play() 
+        }
+        function playtts(text){
+          var msg = new SpeechSynthesisUtterance(text);
+          msg.lang = "en-US";
+          msg.pitch = 1.8;
+          msg.rate = 0.6;
+          window.speechSynthesis.speak(msg);
         }
       </script>
     </body>
