@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body class='cyan'>
+    <nav>
+        <div class="nav-wrapper navbar-fixed cyan darken-2">
+            <a href="" class="brand-logo">SantaSound</a>
+        </div>
+    </nav> 
+      <div class="container">
+          <div class='row'>
+              <div class='col s12'>
+                  <div class='class="waves-effect waves-light btn orange' onclick='playMC()'>MerryChristmas!</div>
+              </div>
+              <div class='col s12'>
+                  <div class='class="waves-effect waves-light btn orange'>MerryChristmas!</div>
+              </div>
+
+          </div>
+      </div>
+    <audio id="mc" src="snd/mc.mp3">
+    </audio>
+        http://www.freesfx.co.uk
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript">
+        function playMC(){
+           var tar = document.getElementById('mc');
+          tar.play() 
+        }
+      </script>
+    </body>
+  </html>
