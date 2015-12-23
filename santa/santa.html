@@ -15,9 +15,10 @@
     </nav> 
       <div class="container">
           <div class='row'>
-              <div class='class="waves-effect waves-light btn orange col s12' onclick='play("mc")'>MerryChristmas!</div>
-              <div class='class="waves-effect waves-light btn orange col s12'onclick='play("kno")'>Knock</div>
-              <div class='class="waves-effect waves-light btn orange col s12'onclick='play("bell")'>Bell</div>
+              <input type='text' class='col s8 white' id='tts'><div class='waves-effect waves-light btn orange col s4' onclick='playtts()'>play</div>
+              <div class='waves-effect waves-light btn orange col s12' onclick='play("mc")'>MerryChristmas!</div>
+              <div class='waves-effect waves-light btn orange col s12'onclick='play("kno")'>Knock</div>
+              <div class='waves-effect waves-light btn orange col s12'onclick='play("bell")'>Bell</div>
 
           </div>
       </div>
@@ -32,8 +33,15 @@
            var tar = document.getElementById(txt);
           tar.play() 
         }
-        function playtts(text){
-          var msg = new SpeechSynthesisUtterance(text);
+        function playtts(){
+
+          var tar = document.getElementById('tts');
+          var txt = tar.value;
+
+          if(txt === undefined || txt.length === 0){
+            return;
+          }
+          var msg = new SpeechSynthesisUtterance(txt);
           msg.lang = "en-US";
           msg.pitch = 1.8;
           msg.rate = 0.6;
