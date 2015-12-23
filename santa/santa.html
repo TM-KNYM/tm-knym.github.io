@@ -41,7 +41,9 @@
           if(txt === undefined || txt.length === 0){
             return;
           }
+          var voices = window.speechSynthesis.getVoices();
           var msg = new SpeechSynthesisUtterance(txt);
+          msg.voice = voices[1]
           msg.lang = "en-US";
           msg.pitch = 0.0;
           msg.rate = 0.6;
