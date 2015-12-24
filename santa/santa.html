@@ -4,7 +4,9 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <style type="text/css">
+    div.btn {margin-top:10px;}
+    </style>
     </head>
 
     <body class='cyan'>
@@ -15,19 +17,18 @@
     </nav> 
       <div class="container">
           <div class='row'>
-              <input type='text' class='col s8 white' id='tts'><div class='waves-effect waves-light btn orange col s4' onclick='playtts()'>play</div>
-              <div class='waves-effect waves-light btn orange col s12' onclick='play("mc")' style="margin-top:10px" >MerryChristmas!</div>
-              <div class='waves-effect waves-light btn orange col s12'onclick='play("kno")' style="margin-top:10px">Knock</div>
-              <div class='waves-effect waves-light btn orange col s12'onclick='play("crash")' style="margin-top:10px">Crash</div>
-              <div class='waves-effect waves-light btn orange col s12'onclick='play("bell")' style="margin-top:10px">Bell</div>
+              <div class='waves-effect waves-light btn orange col s12'onclick='play("kno")' >1.Knock</div>
+              <div class='waves-effect waves-light btn orange col s12'onclick='play("crash")'>2.Crash</div>
+              <div class='waves-effect waves-light btn orange col s12' onclick='play("mc")'>3.MerryChristmas!</div>
+              <div class='waves-effect waves-light btn orange col s12'onclick='play("bell")'>4.Bell</div>
 
           </div>
+          <div  class='white'>sound source:<a href='http://www.freesfx.co.uk' target="_blank">http://www.freesfx.co.uk</a></div>
       </div>
     <audio id="mc" src="snd/mc.mp3"></audio>
     <audio id="kno" src="snd/kno.mp3"></audio>
     <audio id="bell" src="snd/bell.mp3"></audio>
     <audio id="crash" src="snd/crash.mp3"></audio>
-        http://www.freesfx.co.uk
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script type="text/javascript">
