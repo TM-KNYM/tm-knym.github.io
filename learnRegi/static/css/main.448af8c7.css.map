@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,wBACE,SACA,UACA,YACA,uBACA,wBAA4B","file":"static/css/main.448af8c7.css","sourcesContent":["html, body, #app, #app>div {\n  margin: 0;\n  padding: 0;\n  height: 100%;\n  font-family: sans-serif;\n  background-color: whitesmoke\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
