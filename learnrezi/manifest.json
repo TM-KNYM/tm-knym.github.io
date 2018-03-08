@@ -9,8 +9,8 @@
     }
   ],
   "display": "standalone",
-  "orientation":  "landscape",
-  "start_url": "./index.html",
+  "orientation": "landscape",
+  "start_url": "https://tm-knym.github.io/learnrezi/",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
